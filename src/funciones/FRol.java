@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.unach.siget.funciones;
+package funciones;
 
-import ec.edu.unach.siget.accesodatos.AccesoDatos;
-import ec.edu.unach.siget.accesodatos.ConjuntoResultado;
-import ec.edu.unach.siget.accesodatos.Parametro;
+import accesodatos.AccesoDatos;
+import accesodatos.ConjuntoResultado;
+import accesodatos.Parametro;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import ec.edu.unach.siget.entidades.Rol;
+import entidades.Rol;
 
 /**
  *
@@ -30,7 +30,8 @@ public class FRol implements Serializable {
             lstP.add(new Parametro(4, rol.getCodigo_modulo()));
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
             while (rs.next()) {
-                if (rs.getString(0).equals("true"));
+                if (rs.getString(0).equals
+                ("true"));
                 eje = true;
             }
         } catch (SQLException exConec) {

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ec.edu.unach.siget.entidades;
+package entidades;
 
 import java.io.Serializable;
 import java.sql.Date;

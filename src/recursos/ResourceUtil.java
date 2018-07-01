@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.unach.siget.recursos;
+package recursos;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;

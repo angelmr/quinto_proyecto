@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.unach.siget.accesodatos;
+package accesodatos;
 
 import java.io.Serializable;
-import ec.edu.unach.siget.recursos.ResourceUtil;
+import recursos.ResourceUtil;
 
 /**
  *
@@ -15,10 +15,10 @@ public final class Global implements Serializable {
 
 //    private java.util.ResourceBundle Configuracion = java.util.ResourceBundle.getBundle("accesodatos.database");
     //private String URL = Configuracion.getString("url");
-    private String URL = ResourceUtil.getString("url", "ec.edu.unach.siget.accesodatos.database");
-    private String DRIVER = ResourceUtil.getString("driver", "ec.edu.unach.siget.accesodatos.database");
-    private String USER = ResourceUtil.getString("user", "ec.edu.unach.siget.accesodatos.database");
-    private String PASS = ResourceUtil.getString("password", "ec.edu.unach.siget.accesodatos.database");
+    private String URL = ResourceUtil.getString("url", "accesodatos.database");
+    private String DRIVER = ResourceUtil.getString("driver", "accesodatos.database");
+    private String USER = ResourceUtil.getString("user", "accesodatos.database");
+    private String PASS = ResourceUtil.getString("password", "accesodatos.database");
 //    private String DRIVER = Configuracion.getString("driver");
 //    private String USER = Configuracion.getString("user");
 //    private String PASS = Configuracion.getString("password");
@@ -36,7 +36,7 @@ public final class Global implements Serializable {
     public final static String MENSAJEERRORSESION = "Su sesi&oacute;n ha caducado, reinicie sesi&oacute;n ";
     public final static String MENSAJEERRORCLAVES = "Las claves no coinciden";
 
-    //Direcciones
+    ///Direcciones
     public final static String DOMINIO = "http://siget.unach.edu.ec/";
 
     //PublicacionesNoticias

@@ -1,25 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package ec.edu.unach.siget.entidades;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
 
-public class Periodo {
-    private int codigo;
-    private String nombre;
-    private Date fecha_inicio;   
-    private Date fecha_fin; 
-    private int tipo;     
-    private String observaciones;
-    private int codigo_sicoa;
-    private int estado; 
-    
+/**
+ *
+ * @author Diego
+ */
+public class Periodo implements Serializable{
+  private int codigo;
+  private String nombre;
+  private Date fecha_inicio;
+  private Date fecha_fin;
+  private int tipo;
+  private String observaciones;
+  private int codigo_sicoa;
+  private int estado;
+
+    public Periodo(int codigo, String nombre, Date fecha_inicio, Date fecha_fin, int tipo, String observaciones, int codigo_sicoa, int estado) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+        this.tipo = tipo;
+        this.observaciones = observaciones;
+        this.codigo_sicoa = codigo_sicoa;
+        this.estado = estado;
+    }    
+
     public Periodo() {
-    }
-
-    
-
-    @Override
-    public String toString() {
-        return nombre;
     }
 
     public int getCodigo() {
@@ -85,7 +100,6 @@ public class Periodo {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-
+    
     
 }
-    

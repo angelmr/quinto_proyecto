@@ -1,7 +1,19 @@
-package ec.edu.unach.siget.entidades;
-import java.util.*;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-public class Usuario {
+package ec.edu.unach.siget.entidades;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+/**
+ *
+ * @author Diego
+ */
+public class Usuario implements Serializable{
   private long codigo;
   private String apellidos;
   private String nombres;
@@ -12,12 +24,31 @@ public class Usuario {
   private String clave_respuesta;
   private String mail;
   private int estado;
-  private Date primer_acceso;
-  private Date utimo_acceso;
+  private Timestamp primer_acceso ;
+  private Timestamp utimo_acceso;
   private String ultima_ip;
-  private Date fecha_modificacion;
+  private Timestamp fecha_modificacion;
   private String codigo_salt;
   private String ruta_firma;
+
+    public Usuario(long codigo, String apellidos, String nombres, String identificacion, String nombre_corto, String clave, String clave_pregunta, String clave_respuesta, String mail, int estado, Timestamp primer_acceso, Timestamp utimo_acceso, String ultima_ip, Timestamp fecha_modificacion, String codigo_salt, String ruta_firma) {
+        this.codigo = codigo;
+        this.apellidos = apellidos;
+        this.nombres = nombres;
+        this.identificacion = identificacion;
+        this.nombre_corto = nombre_corto;
+        this.clave = clave;
+        this.clave_pregunta = clave_pregunta;
+        this.clave_respuesta = clave_respuesta;
+        this.mail = mail;
+        this.estado = estado;
+        this.primer_acceso = primer_acceso;
+        this.utimo_acceso = utimo_acceso;
+        this.ultima_ip = ultima_ip;
+        this.fecha_modificacion = fecha_modificacion;
+        this.codigo_salt = codigo_salt;
+        this.ruta_firma = ruta_firma;
+    }
 
     public Usuario() {
     }
@@ -102,19 +133,19 @@ public class Usuario {
         this.estado = estado;
     }
 
-    public Date getPrimer_acceso() {
+    public Timestamp getPrimer_acceso() {
         return primer_acceso;
     }
 
-    public void setPrimer_acceso(Date primer_acceso) {
+    public void setPrimer_acceso(Timestamp primer_acceso) {
         this.primer_acceso = primer_acceso;
     }
 
-    public Date getUtimo_acceso() {
+    public Timestamp getUtimo_acceso() {
         return utimo_acceso;
     }
 
-    public void setUtimo_acceso(Date utimo_acceso) {
+    public void setUtimo_acceso(Timestamp utimo_acceso) {
         this.utimo_acceso = utimo_acceso;
     }
 
@@ -126,11 +157,11 @@ public class Usuario {
         this.ultima_ip = ultima_ip;
     }
 
-    public Date getFecha_modificacion() {
+    public Timestamp getFecha_modificacion() {
         return fecha_modificacion;
     }
 
-    public void setFecha_modificacion(Date fecha_modificacion) {
+    public void setFecha_modificacion(Timestamp fecha_modificacion) {
         this.fecha_modificacion = fecha_modificacion;
     }
 
@@ -148,12 +179,8 @@ public class Usuario {
 
     public void setRuta_firma(String ruta_firma) {
         this.ruta_firma = ruta_firma;
-    }
+    }  
+}
 
-    @Override
-    public String toString() {
-        return nombres;
-    }
 
     
-}

@@ -1,14 +1,34 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package ec.edu.unach.siget.entidades;
 
-public class Rol {
-    private int codigo;
-    private String nombre;
-    private String descripcion;
-    private int estado;
-    private int codigo_modulo;
+import java.io.Serializable;
+
+/**
+ *
+ * @author Diego
+ */
+public class Rol implements Serializable{
+  private int codigo;
+  private String nombre;
+  private String descripcion;
+  private int estado;
+  private int codigo_modulo;
+
+    public Rol(int codigo, String nombre, String descripcion, int estado, int codigo_modulo) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.codigo_modulo = codigo_modulo;
+    }
 
     public Rol() {
-    } 
+    }
 
     public int getCodigo() {
         return codigo;
@@ -50,8 +70,6 @@ public class Rol {
         this.codigo_modulo = codigo_modulo;
     }
     
-    @Override
-    public String toString() {
-        return nombre;
-    }
+    
+    
 }

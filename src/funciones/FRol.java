@@ -24,9 +24,9 @@ public class FRol implements Serializable {
         try {
             ArrayList<Parametro> lstP = new ArrayList<Parametro>();
             String sql = "select * from actividades.finsertar_rol(?,?,?,?)";
-            lstP.add(new Parametro(1, rol.getCodigo()));
-            lstP.add(new Parametro(2, rol.getNombre()));
-            lstP.add(new Parametro(3, rol.getDescripcion()));
+            lstP.add(new Parametro(1, rol.getNombre()));
+            lstP.add(new Parametro(2, rol.getDescripcion()));
+            lstP.add(new Parametro(3, rol.getEstado()));
             lstP.add(new Parametro(4, rol.getCodigo_modulo()));
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
             while (rs.next()) {

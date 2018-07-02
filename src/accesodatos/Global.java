@@ -25,7 +25,7 @@ public final class Global implements Serializable {
 
     //pool de conexiones
     //private String JDNI = Configuracion.getString("jdni");
-    private String JDNI = ResourceUtil.getString("jdni", "ec.edu.unach.siget.accesodatos.database");
+    private String JDNI = ResourceUtil.getString("jdni", "accesodatos.database");
 
     //Mails
     public final static String SISEPECMASTERMAIL = "";

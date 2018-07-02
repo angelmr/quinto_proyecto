@@ -125,8 +125,21 @@ public class FrmInsertarRol extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
-        
-     
+    try {
+            Rol rol = new Rol();
+            rol.setNombre(txtNombre.getText());
+            rol.setDescripcion(txtDescripcion.getText());
+            rol.setEstado(Integer.parseInt(txtEstado.getText()));
+            rol.setCodigo_modulo(Integer.parseInt(txtCodigo_modulo.getText()));
+            FRol rolf = new FRol();
+            if(rolf.Insertar(rol) ){
+                JOptionPane.showMessageDialog(this,"Registrado correctamente!!",
+                "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }             
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     /**

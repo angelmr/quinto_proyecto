@@ -50,7 +50,7 @@ public class FrmInsertarRol extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ingresar Rol");
+        jLabel1.setText("REGISTRAR ROL");
 
         lblDescripcion.setText("Descripcion:");
 
@@ -60,7 +60,7 @@ public class FrmInsertarRol extends javax.swing.JFrame {
 
         lblNombre.setText("Nombre:");
 
-        btnInsertar.setText("Insertar");
+        btnInsertar.setText("Registrar");
         btnInsertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInsertarActionPerformed(evt);
@@ -91,7 +91,7 @@ public class FrmInsertarRol extends javax.swing.JFrame {
                             .addComponent(txtCodigo_modulo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 168, Short.MAX_VALUE)
+                .addGap(0, 162, Short.MAX_VALUE)
                 .addComponent(btnInsertar)
                 .addGap(161, 161, 161))
         );
@@ -127,12 +127,12 @@ public class FrmInsertarRol extends javax.swing.JFrame {
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
     try {
             Rol rol = new Rol();
+            FRol frol = new FRol();
             rol.setNombre(txtNombre.getText());
             rol.setDescripcion(txtDescripcion.getText());
             rol.setEstado(Integer.parseInt(txtEstado.getText()));
-            rol.setCodigo_modulo(Integer.parseInt(txtCodigo_modulo.getText()));
-            FRol rolf = new FRol();
-            if(rolf.Insertar(rol) ){
+            rol.setCodigo_modulo(Integer.parseInt(txtCodigo_modulo.getText()));            
+            if(frol.Insertar(rol) ){
                 JOptionPane.showMessageDialog(this,"Registrado correctamente!!",
                 "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
             }

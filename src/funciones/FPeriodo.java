@@ -5,13 +5,11 @@
  */
 package funciones;
 
-import accesodatos.AccesoDatos;
-import accesodatos.ConjuntoResultado;
-import accesodatos.Parametro;
+import accesodatos.*;
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import entidades.Periodo;
+import java.util.*;
 
 /**
  *

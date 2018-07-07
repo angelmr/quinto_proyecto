@@ -5,6 +5,12 @@
  */
 package vistas;
 
+import entidades.Periodo;
+import funciones.FPeriodo;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER
@@ -12,7 +18,7 @@ package vistas;
 public class FrmInsertarPeriodo extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmInsertarPeriodo
+     * Creates new form FrmInsertarUsuario
      */
     public FrmInsertarPeriodo() {
         initComponents();
@@ -27,21 +33,155 @@ public class FrmInsertarPeriodo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnInsertar = new javax.swing.JButton();
+        lblNombre = new javax.swing.JLabel();
+        lblFecha_inicio = new javax.swing.JLabel();
+        lblFecha_fin = new javax.swing.JLabel();
+        lblTipo = new javax.swing.JLabel();
+        lblObservaciones = new javax.swing.JLabel();
+        lblCodigo_sicoa = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtFecha_inicio = new javax.swing.JTextField();
+        txtFecha_fin = new javax.swing.JTextField();
+        txtTipo = new javax.swing.JTextField();
+        txtObservaciones = new javax.swing.JTextField();
+        txtCodigo_sicoa = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnInsertar.setText("Registrar");
+        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarActionPerformed(evt);
+            }
+        });
+
+        lblNombre.setText("Nombre:");
+
+        lblFecha_inicio.setText("Fecha inicio:");
+
+        lblFecha_fin.setText("Fecha fin:");
+
+        lblTipo.setText("Tipo:");
+
+        lblObservaciones.setText("Observaciones:");
+
+        lblCodigo_sicoa.setText("Codigo sicoa:");
+
+        lblEstado.setText("Estado");
+
+        jLabel1.setText("REGISTRAR PERIODO ACADEMICO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFecha_fin)
+                            .addComponent(lblFecha_inicio)
+                            .addComponent(lblTipo)
+                            .addComponent(lblObservaciones)
+                            .addComponent(lblCodigo_sicoa)
+                            .addComponent(lblNombre)
+                            .addComponent(lblEstado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFecha_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFecha_fin, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigo_sicoa, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(btnInsertar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel1)))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFecha_inicio)
+                    .addComponent(txtFecha_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFecha_fin)
+                    .addComponent(txtFecha_fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipo)
+                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblObservaciones)
+                    .addComponent(txtObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigo_sicoa)
+                    .addComponent(txtCodigo_sicoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEstado)
+                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnInsertar)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+        Periodo periodo = new Periodo(); 
+        FPeriodo fperiodo = new FPeriodo();
+        periodo.setNombre(txtNombre.getText());
+         DateFormat formatoFecha = new SimpleDateFormat("YYYY-MM-dd");
+        try {
+            periodo.setFecha_inicio(formatoFecha.parse(txtFecha_inicio.getText()));
+            periodo.setFecha_fin(formatoFecha.parse(txtFecha_fin.getText()));
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error en la fecha!!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+       
+        periodo.setTipo(Integer.parseInt(txtTipo.getText()));
+        periodo.setObservaciones(txtObservaciones.getText());
+        periodo.setCodigo_sicoa(Integer.parseInt(txtCodigo_sicoa.getText()));
+        periodo.setEstado(Integer.parseInt(txtEstado.getText()));
+        
+        try {
+            if (fperiodo.Insertar(periodo)) {
+                JOptionPane.showMessageDialog(this, "Guardado Correctamente!!",
+                        "Transacción", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error desconocido: ",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar!!: " + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    
+    }//GEN-LAST:event_btnInsertarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -69,6 +209,7 @@ public class FrmInsertarPeriodo extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmInsertarPeriodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -79,5 +220,21 @@ public class FrmInsertarPeriodo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInsertar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblCodigo_sicoa;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblFecha_fin;
+    private javax.swing.JLabel lblFecha_inicio;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblObservaciones;
+    private javax.swing.JLabel lblTipo;
+    private javax.swing.JTextField txtCodigo_sicoa;
+    private javax.swing.JTextField txtEstado;
+    private javax.swing.JTextField txtFecha_fin;
+    private javax.swing.JTextField txtFecha_inicio;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtObservaciones;
+    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }

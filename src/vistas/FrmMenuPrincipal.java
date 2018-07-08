@@ -7,12 +7,12 @@ package vistas;
 
 /**
  *
- * @author USER
+ * @author Personal
  */
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuPrincipal
+     * Creates new form FrmMenuPrincipal
      */
     public FrmMenuPrincipal() {
         initComponents();
@@ -68,7 +68,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

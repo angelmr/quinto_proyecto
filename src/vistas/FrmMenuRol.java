@@ -16,12 +16,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Personal
  */
-public class FrmModificarRol extends javax.swing.JFrame {
+public class FrmMenuRol extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmModificarRol
      */
-    public FrmModificarRol() {
+    public FrmMenuRol() {
         initComponents();
         
     }
@@ -64,6 +64,7 @@ public class FrmModificarRol extends javax.swing.JFrame {
         btnListar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaListarRoles = new javax.swing.JTable();
+        btnNuevo = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,15 +134,32 @@ public class FrmModificarRol extends javax.swing.JFrame {
                 "Codigo", "Nombre", "Descripcion", "Estado", "Codigo modulo"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        TablaListarRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TablaListarRoles.setEnabled(false);
+        TablaListarRoles.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(TablaListarRoles);
+        if (TablaListarRoles.getColumnModel().getColumnCount() > 0) {
+            TablaListarRoles.getColumnModel().getColumn(0).setResizable(false);
+            TablaListarRoles.getColumnModel().getColumn(1).setResizable(false);
+            TablaListarRoles.getColumnModel().getColumn(2).setResizable(false);
+            TablaListarRoles.getColumnModel().getColumn(3).setResizable(false);
+            TablaListarRoles.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,33 +177,36 @@ public class FrmModificarRol extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(83, 83, 83)
+                        .addComponent(lblCodigo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(lblCodigo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblNombre)
                                     .addComponent(lblDescripcion)
                                     .addComponent(lblEstado)
-                                    .addComponent(lblCodigo_modulo))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnEliminar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnModificar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnListar))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                        .addComponent(txtDescripcion)
-                                        .addComponent(txtEstado)
-                                        .addComponent(txtCodigo_modulo)))))))
-                .addContainerGap(119, Short.MAX_VALUE))
+                                    .addComponent(lblCodigo_modulo)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnNuevo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEliminar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnListar))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                .addComponent(txtDescripcion)
+                                .addComponent(txtEstado)
+                                .addComponent(txtCodigo_modulo)))))
+                .addContainerGap(117, Short.MAX_VALUE))
             .addComponent(jScrollPane2)
         );
         layout.setVerticalGroup(
@@ -222,7 +243,8 @@ public class FrmModificarRol extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
-                    .addComponent(btnListar))
+                    .addComponent(btnListar)
+                    .addComponent(btnNuevo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -294,7 +316,7 @@ public class FrmModificarRol extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-    DefaultTableModel modelo = (DefaultTableModel) TablaListarRoles.getModel();               
+        DefaultTableModel modelo = (DefaultTableModel) TablaListarRoles.getModel();               
         ArrayList<Rol> lista = new ArrayList<>();
         try {
             FRol frol = new FRol();
@@ -305,12 +327,38 @@ public class FrmModificarRol extends javax.swing.JFrame {
         }
         for(Rol r : lista){
             modelo.addRow(new Object[]{ r.getCodigo(),r.getNombre(),r.getDescripcion(),
-            r.getEstado(),r.getCodigo_modulo()});            
+            r.getEstado(),r.getCodigo_modulo()});           
         }
-        TablaListarRoles.setModel(modelo);        
-    
-    
+             
     }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        if (btnNuevo.getText().compareTo("Nuevo")==0) {
+            limpiarControles();
+            btnNuevo.setText("Registrar");          
+        }else{
+            if(btnNuevo.getText().compareTo("Registrar")==0){                  
+            try {
+            Rol rol = new Rol();
+            FRol frol = new FRol();
+            rol.setNombre(txtNombre.getText());
+            rol.setDescripcion(txtDescripcion.getText());
+            rol.setEstado(Integer.parseInt(txtEstado.getText()));
+            rol.setCodigo_modulo(Integer.parseInt(txtCodigo_modulo.getText()));            
+            if(frol.Insertar(rol) ){
+                limpiarControles();
+                JOptionPane.showMessageDialog(this,"Registrado correctamente!!",
+                "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
+                btnNuevo.setText("Nuevo");
+                }
+            } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+                }            
+            }    
+        }   
+        
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,20 +377,21 @@ public class FrmModificarRol extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmModificarRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmModificarRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmModificarRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmModificarRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmModificarRol().setVisible(true);
+                new FrmMenuRol().setVisible(true);
             }
         });
     }
@@ -353,6 +402,7 @@ public class FrmModificarRol extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

@@ -24,7 +24,7 @@ public class Usuario implements Serializable{
   private String clave_respuesta;
   private String mail;
   private int estado;
-  private Timestamp primer_acceso ;
+  private Timestamp  primer_acceso ;
   private Timestamp utimo_acceso;
   private String ultima_ip;
   private Timestamp fecha_modificacion;
@@ -179,8 +179,7 @@ public class Usuario implements Serializable{
 
     public void setRuta_firma(String ruta_firma) {
         this.ruta_firma = ruta_firma;
-    }  
+    }
+
+  
 }
-
-
-    

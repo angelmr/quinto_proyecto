@@ -9,7 +9,6 @@ package entidades;
 import java.io.Serializable;
 import java.util.Date;
 
-
 /**
  *
  * @author Diego
@@ -33,7 +32,7 @@ public class Periodo implements Serializable{
         this.observaciones = observaciones;
         this.codigo_sicoa = codigo_sicoa;
         this.estado = estado;
-    }    
+    }
 
     public Periodo() {
     }
@@ -101,6 +100,6 @@ public class Periodo implements Serializable{
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    
+
     
 }

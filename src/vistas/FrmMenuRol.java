@@ -45,9 +45,9 @@ public class FrmMenuRol extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         lblBuscador = new javax.swing.JLabel();
         txtCodigoBuscar = new javax.swing.JTextField();
         lblDatosCurso = new javax.swing.JLabel();
@@ -62,9 +62,9 @@ public class FrmMenuRol extends javax.swing.JFrame {
         txtEstado = new javax.swing.JTextField();
         txtCodigo_modulo = new javax.swing.JTextField();
         btnListar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TablaListarRoles = new javax.swing.JTable();
         btnNuevo = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TablaListarRoles = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,6 +79,13 @@ public class FrmMenuRol extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnModificar.setText("Modificar");
@@ -92,13 +99,6 @@ public class FrmMenuRol extends javax.swing.JFrame {
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
-            }
-        });
-
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -126,6 +126,13 @@ public class FrmMenuRol extends javax.swing.JFrame {
             }
         });
 
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+
         TablaListarRoles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -134,32 +141,16 @@ public class FrmMenuRol extends javax.swing.JFrame {
                 "Codigo", "Nombre", "Descripcion", "Estado", "Codigo modulo"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
-        TablaListarRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        TablaListarRoles.setEnabled(false);
-        TablaListarRoles.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane2.setViewportView(TablaListarRoles);
-        if (TablaListarRoles.getColumnModel().getColumnCount() > 0) {
-            TablaListarRoles.getColumnModel().getColumn(0).setResizable(false);
-            TablaListarRoles.getColumnModel().getColumn(1).setResizable(false);
-            TablaListarRoles.getColumnModel().getColumn(2).setResizable(false);
-            TablaListarRoles.getColumnModel().getColumn(3).setResizable(false);
-            TablaListarRoles.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        btnNuevo.setText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
+        TablaListarRoles.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane3.setViewportView(TablaListarRoles);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,15 +160,9 @@ public class FrmMenuRol extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDatosCurso)
-                            .addComponent(lblBuscador))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar))
+                        .addComponent(lblDatosCurso))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
+                        .addGap(97, 97, 97)
                         .addComponent(lblCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -205,9 +190,14 @@ public class FrmMenuRol extends javax.swing.JFrame {
                                 .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                                 .addComponent(txtDescripcion)
                                 .addComponent(txtEstado)
-                                .addComponent(txtCodigo_modulo)))))
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addComponent(jScrollPane2)
+                                .addComponent(txtCodigo_modulo))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblBuscador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(121, 121, 121)))
+                .addContainerGap(518, Short.MAX_VALUE))
+            .addComponent(jScrollPane3)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,9 +205,8 @@ public class FrmMenuRol extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBuscador)
-                    .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(lblDatosCurso)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -245,8 +234,8 @@ public class FrmMenuRol extends javax.swing.JFrame {
                     .addComponent(btnEliminar)
                     .addComponent(btnListar)
                     .addComponent(btnNuevo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -404,7 +393,7 @@ public class FrmMenuRol extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBuscador;
     private javax.swing.JLabel lblCodigo;

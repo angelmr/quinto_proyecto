@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import entidades.Usuario;
+import java.util.TimeZone;
 
 /**
  *
@@ -51,7 +52,7 @@ public class FUsuario implements Serializable {
         Usuario usuario = null;
         try {
             while (rs.next()) {
-                usuario = new Usuario(rs.getLong("pcodigo"), rs.getString("papellidos"), rs.getString("pnombres"),                       rs.getString("pidentificacion"), rs.getString("pnombre_corto"), rs.getString("pclave"), rs.getString("pclave_pregunta"), rs.getString("pclave_respuesta"), rs.getString("pmail"), rs.getInt("pestado"), rs.getTimeStamp("pprimer_acceso"), rs.getTimeStamp("pultimo_acceso"), rs.getString("pultima_ip"), rs.getTimeStamp("pfecha_modificacion"), rs.getString("pcodigo_salt"), rs.getString("pruta_firma"));
+                usuario = new Usuario(rs.getLong("pcodigo"), rs.getString("papellidos"), rs.getString("pnombres"),rs.getString("pidentificacion"), rs.getString("pnombre_corto"), rs.getString("pclave"), rs.getString("pclave_pregunta"), rs.getString("pclave_respuesta"), rs.getString("pmail"), rs.getInt("pestado"), rs.getTimeStamp("pprimer_acceso"), rs.getTimeStamp("pultimo_acceso"), rs.getString("pultima_ip"), rs.getTimeStamp("pfecha_modificacion"), rs.getString("pcodigo_salt"), rs.getString("pruta_firma"));
                 lst.add(usuario);
             }
         } catch (Exception e) {

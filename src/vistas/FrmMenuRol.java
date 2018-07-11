@@ -4,29 +4,24 @@
  * and open the template in the editor.
  */
 package vistas;
-
 import entidades.Rol;
 import funciones.FRol;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
- * @author Personal
+ * @author USER
  */
 public class FrmMenuRol extends javax.swing.JFrame {
-
+    
     /**
-     * Creates new form FrmModificarRol
+     * Creates new form FrmMenu
      */
     public FrmMenuRol() {
         initComponents();
-        
     }
-    
-    
     private void limpiarControles() {
         txtCodigo.setText("");
         txtNombre.setText("");
@@ -43,50 +38,33 @@ public class FrmMenuRol extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnBuscar = new javax.swing.JButton();
+        lblNombre = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
+        lblCodigo_modulo = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
         lblBuscador = new javax.swing.JLabel();
+        txtEstado = new javax.swing.JTextField();
         txtCodigoBuscar = new javax.swing.JTextField();
+        txtCodigo_modulo = new javax.swing.JTextField();
         lblDatosCurso = new javax.swing.JLabel();
+        btnListar = new javax.swing.JButton();
         lblCodigo = new javax.swing.JLabel();
+        btnNuevo = new javax.swing.JButton();
         lblDescripcion = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
-        lblNombre = new javax.swing.JLabel();
-        lblEstado = new javax.swing.JLabel();
-        lblCodigo_modulo = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtEstado = new javax.swing.JTextField();
-        txtCodigo_modulo = new javax.swing.JTextField();
-        btnListar = new javax.swing.JButton();
-        btnNuevo = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaListarRoles = new javax.swing.JTable();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(886, 722));
+
+        lblNombre.setText("Nombre:");
+
+        lblEstado.setText("Estado:");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +72,8 @@ public class FrmMenuRol extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
+
+        lblCodigo_modulo.setText("Codigo modulo:");
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,18 +87,6 @@ public class FrmMenuRol extends javax.swing.JFrame {
         lblDatosCurso.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblDatosCurso.setText("Informacion del rol");
 
-        lblCodigo.setText("Código:");
-
-        lblDescripcion.setText("Descripción:");
-
-        txtCodigo.setEnabled(false);
-
-        lblNombre.setText("Nombre:");
-
-        lblEstado.setText("Estado:");
-
-        lblCodigo_modulo.setText("Codigo modulo:");
-
         btnListar.setText("Listar");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,12 +94,18 @@ public class FrmMenuRol extends javax.swing.JFrame {
             }
         });
 
+        lblCodigo.setText("Código:");
+
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
             }
         });
+
+        lblDescripcion.setText("Descripción:");
+
+        txtCodigo.setEnabled(false);
 
         TablaListarRoles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,58 +126,67 @@ public class FrmMenuRol extends javax.swing.JFrame {
         TablaListarRoles.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane3.setViewportView(TablaListarRoles);
 
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(lblDatosCurso))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(lblCodigo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblNombre)
-                                    .addComponent(lblDescripcion)
-                                    .addComponent(lblEstado)
-                                    .addComponent(lblCodigo_modulo)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnNuevo)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEliminar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnModificar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnListar))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                .addComponent(txtDescripcion)
-                                .addComponent(txtEstado)
-                                .addComponent(txtCodigo_modulo))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
                         .addComponent(lblBuscador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(121, 121, 121)))
-                .addContainerGap(518, Short.MAX_VALUE))
-            .addComponent(jScrollPane3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDatosCurso)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addComponent(lblCodigo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblNombre)
+                                            .addComponent(lblDescripcion)
+                                            .addComponent(lblEstado)
+                                            .addComponent(lblCodigo_modulo)))
+                                    .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtNombre)
+                                        .addComponent(txtDescripcion)
+                                        .addComponent(txtEstado)
+                                        .addComponent(txtCodigo_modulo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnEliminar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnModificar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnListar)))))))
+                .addContainerGap(525, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscar)
                     .addComponent(lblBuscador)
                     .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -234,12 +217,35 @@ public class FrmMenuRol extends javax.swing.JFrame {
                     .addComponent(btnEliminar)
                     .addComponent(btnListar)
                     .addComponent(btnNuevo))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        FRol frol = new FRol();
+        int confirmacion = JOptionPane.showConfirmDialog(this,
+            "¿Quiere modificar el rol?", "Confirme",
+            JOptionPane.YES_NO_OPTION);
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            try {
+                rol.setCodigo(Integer.parseInt(txtCodigo.getText()));
+                rol.setNombre(txtNombre.getText());
+                rol.setDescripcion(txtDescripcion.getText());
+                rol.setEstado(Integer.parseInt(txtEstado.getText()));
+                rol.setCodigo_modulo(Integer.parseInt(txtCodigo_modulo.getText()));
+                if(frol.actualizar(rol) ){
+                    JOptionPane.showMessageDialog(this,"Rol modificado correctamente!!",
+                        "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         FRol frol = new FRol();
@@ -261,6 +267,49 @@ public class FrmMenuRol extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) TablaListarRoles.getModel();               
+        ArrayList<Rol> lista = new ArrayList<>();
+        try {
+            FRol frol = new FRol();
+            lista = frol.ObtenerRoles();            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(),"Error", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        for(Rol r : lista){
+            modelo.addRow(new Object[]{ r.getCodigo(),r.getNombre(),r.getDescripcion(),
+            r.getEstado(),r.getCodigo_modulo()});           
+        }
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        if (btnNuevo.getText().compareTo("Nuevo")==0) {
+            limpiarControles();
+            btnNuevo.setText("Registrar");
+        }else{
+            if(btnNuevo.getText().compareTo("Registrar")==0){
+                try {
+                    Rol rol = new Rol();
+                    FRol frol = new FRol();
+                    rol.setNombre(txtNombre.getText());
+                    rol.setDescripcion(txtDescripcion.getText());
+                    rol.setEstado(Integer.parseInt(txtEstado.getText()));
+                    rol.setCodigo_modulo(Integer.parseInt(txtCodigo_modulo.getText()));
+                    if(frol.Insertar(rol) ){
+                        limpiarControles();
+                        JOptionPane.showMessageDialog(this,"Registrado correctamente!!",
+                            "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
+                        btnNuevo.setText("Nuevo");
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         FRol frol = new FRol();
         try {
@@ -280,74 +329,6 @@ public class FrmMenuRol extends javax.swing.JFrame {
                 "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        FRol frol = new FRol();
-        int confirmacion = JOptionPane.showConfirmDialog(this,
-                "¿Quiere modificar el rol?", "Confirme",
-                JOptionPane.YES_NO_OPTION);
-        if (confirmacion == JOptionPane.YES_OPTION) {
-        try {            
-            rol.setCodigo(Integer.parseInt(txtCodigo.getText()));
-            rol.setNombre(txtNombre.getText());   
-            rol.setDescripcion(txtDescripcion.getText());  
-            rol.setEstado(Integer.parseInt(txtEstado.getText()));
-            rol.setCodigo_modulo(Integer.parseInt(txtCodigo_modulo.getText()));
-            if(frol.actualizar(rol) ){
-                JOptionPane.showMessageDialog(this,"Rol modificado correctamente!!",
-                "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
-            }             
-        }
-    }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) TablaListarRoles.getModel();               
-        ArrayList<Rol> lista = new ArrayList<>();
-        try {
-            FRol frol = new FRol();
-            lista = frol.ObtenerRoles();            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(),"Error", 
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        for(Rol r : lista){
-            modelo.addRow(new Object[]{ r.getCodigo(),r.getNombre(),r.getDescripcion(),
-            r.getEstado(),r.getCodigo_modulo()});           
-        }
-             
-    }//GEN-LAST:event_btnListarActionPerformed
-
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        if (btnNuevo.getText().compareTo("Nuevo")==0) {
-            limpiarControles();
-            btnNuevo.setText("Registrar");          
-        }else{
-            if(btnNuevo.getText().compareTo("Registrar")==0){                  
-            try {
-            Rol rol = new Rol();
-            FRol frol = new FRol();
-            rol.setNombre(txtNombre.getText());
-            rol.setDescripcion(txtDescripcion.getText());
-            rol.setEstado(Integer.parseInt(txtEstado.getText()));
-            rol.setCodigo_modulo(Integer.parseInt(txtCodigo_modulo.getText()));            
-            if(frol.Insertar(rol) ){
-                limpiarControles();
-                JOptionPane.showMessageDialog(this,"Registrado correctamente!!",
-                "Transacción correcta", JOptionPane.INFORMATION_MESSAGE);
-                btnNuevo.setText("Nuevo");
-                }
-            } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this,"Error desconocido: "+ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
-                }            
-            }    
-        }   
-        
-    }//GEN-LAST:event_btnNuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,9 +373,7 @@ public class FrmMenuRol extends javax.swing.JFrame {
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBuscador;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigo_modulo;

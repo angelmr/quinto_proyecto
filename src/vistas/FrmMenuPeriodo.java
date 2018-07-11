@@ -352,8 +352,7 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
                     } catch (Exception ex) {
                            JOptionPane.showMessageDialog(this, "Error en la fecha!!",
                            "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    
+                    }                    
                     periodo.setTipo(Integer.parseInt(txtTipo.getText()));
                     periodo.setObservaciones(txtObservaciones.getText());
                     periodo.setCodigo_sicoa(Integer.parseInt(txtCodigo_sicoa.getText()));

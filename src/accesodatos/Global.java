@@ -4,7 +4,9 @@
  */
 package accesodatos;
 
+
 import java.io.Serializable;
+import java.util.Date;
 import recursos.ResourceUtil;
 
 /**
@@ -13,6 +15,7 @@ import recursos.ResourceUtil;
  */
 public final class Global implements Serializable {
 
+   
 //    private java.util.ResourceBundle Configuracion = java.util.ResourceBundle.getBundle("accesodatos.database");
     //private String URL = Configuracion.getString("url");
     private String URL = ResourceUtil.getString("url", "accesodatos.database");

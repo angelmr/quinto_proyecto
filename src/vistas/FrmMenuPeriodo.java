@@ -5,11 +5,13 @@
  */
 package vistas;
 
+import accesodatos.Global;
 import entidades.Periodo;
 import funciones.FPeriodo;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,6 +21,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmMenuPeriodo extends javax.swing.JFrame {
 
+    
+    
+    
     /**
      * Creates new form FrmMenuPeriodo
      */
@@ -29,13 +34,30 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
     private void limpiarControles() {
         txtCodigo.setText("");
         txtNombre.setText("");
-        txtFecha_inicio.setText("");
-        txtFecha_fin.setText("");
+        spfecha_inicio.setDate(null);
+        spfecha_fin.setDate(null);
         txtTipo.setText("");        
         txtObservaciones.setText("");
         txtCodigo_sicoa.setText("");
         txtEstado.setText("");
     }
+    public static java.sql.Timestamp FechaDadoString(String fecha) {
+//   java.util.Date utilDate = new java.util.Date(fecha); //fecha actual
+        long lnMilisegundos = 0;
+        try {
+            java.util.Date date = Global.getSdf().parse(fecha);
+            lnMilisegundos = date.getTime();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(lnMilisegundos);
+        return sqlTimestamp;
+        //long lnMilisegundos = utilDate.getTime();
+    }
+
+    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,12 +93,12 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
         txtCodigo_sicoa = new javax.swing.JTextField();
         lblFecha_fin = new javax.swing.JLabel();
         lblTipo = new javax.swing.JLabel();
-        txtFecha_fin = new javax.swing.JTextField();
         txtTipo = new javax.swing.JTextField();
         lblFecha_inicio = new javax.swing.JLabel();
-        txtFecha_inicio = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         TablaListarPeriodos = new javax.swing.JTable();
+        spfecha_inicio = new com.toedter.calendar.JDateChooser();
+        spfecha_fin = new com.toedter.calendar.JDateChooser();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -195,6 +217,10 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(TablaListarPeriodos);
 
+        spfecha_inicio.setDateFormatString("yyyy-MM-dd");
+
+        spfecha_fin.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,9 +266,9 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
                                     .addComponent(lblTipo))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFecha_inicio)
-                                    .addComponent(txtFecha_fin)
-                                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                    .addComponent(spfecha_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(spfecha_fin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(44, 44, 44)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1071, Short.MAX_VALUE)
@@ -262,7 +288,7 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(124, 124, 124)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -271,14 +297,14 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
                     .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFecha_inicio)
-                    .addComponent(txtFecha_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spfecha_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFecha_fin)
-                    .addComponent(txtFecha_fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(spfecha_fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipo)
                     .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -302,7 +328,7 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
                     .addComponent(btnNuevo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(28, 28, 28)
@@ -312,7 +338,7 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
                         .addComponent(btnBuscar))
                     .addGap(18, 18, 18)
                     .addComponent(lblDatosCurso)
-                    .addContainerGap(715, Short.MAX_VALUE)))
+                    .addContainerGap(753, Short.MAX_VALUE)))
         );
 
         pack();
@@ -330,7 +356,7 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
         }
         for(Periodo p : lista){
             modelo.addRow(new Object[]{ p.getCodigo(),p.getNombre(),p.getFecha_inicio(),
-                p.getFecha_inicio(),p.getTipo(),p.getObservaciones(),p.getCodigo_sicoa(),p.getEstado()});
+                p.getFecha_fin(),p.getTipo(),p.getObservaciones(),p.getCodigo_sicoa(),p.getEstado()});
         }
 
     }//GEN-LAST:event_btnListarActionPerformed
@@ -344,11 +370,10 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
                 try {
                     Periodo periodo = new Periodo();
                     FPeriodo fperiodo = new FPeriodo();
-                    periodo.setNombre(txtNombre.getText());
-                    DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+                    periodo.setNombre(txtNombre.getText());                    
                     try {
-                        periodo.setFecha_inicio(formatoFecha.parse(txtFecha_inicio.getText()));
-                        periodo.setFecha_fin(formatoFecha.parse(txtFecha_fin.getText()));
+                        periodo.setFecha_inicio(FrmMenuPeriodo.FechaDadoString(sdf.format(spfecha_inicio.getDate())));
+                        periodo.setFecha_fin(FrmMenuPeriodo.FechaDadoString(sdf.format(spfecha_fin.getDate())));
                     } catch (Exception ex) {
                            JOptionPane.showMessageDialog(this, "Error en la fecha!!",
                            "Error", JOptionPane.ERROR_MESSAGE);
@@ -371,7 +396,9 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnNuevoActionPerformed
-
+    
+     
+    
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         FPeriodo fperiodo = new FPeriodo();
         int confirmacion = JOptionPane.showConfirmDialog(this,
@@ -381,10 +408,9 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
             try {
                 periodo.setCodigo(Integer.parseInt(txtCodigo.getText()));
                 periodo.setNombre(txtNombre.getText());
-                DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
                     try {
-                        periodo.setFecha_inicio(formatoFecha.parse(txtFecha_inicio.getText()));
-                        periodo.setFecha_fin(formatoFecha.parse(txtFecha_fin.getText()));
+                        periodo.setFecha_inicio(FrmMenuPeriodo.FechaDadoString(sdf.format(spfecha_inicio.getDate())));
+                        periodo.setFecha_fin(FrmMenuPeriodo.FechaDadoString(sdf.format(spfecha_fin.getDate())));
                     } catch (Exception ex) {
                            JOptionPane.showMessageDialog(this, "Error en la fecha!!",
                            "Error", JOptionPane.ERROR_MESSAGE);
@@ -433,8 +459,8 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
             if (periodo != null) {
                 txtCodigo.setText(Integer.toString(periodo.getCodigo()));
                 txtNombre.setText(periodo.getNombre());                
-                txtFecha_inicio.setText(periodo.getFecha_inicio().toString());
-                txtFecha_fin.setText(periodo.getFecha_fin().toString());
+                spfecha_inicio.setDate(periodo.getFecha_inicio());
+                spfecha_fin.setDate(periodo.getFecha_fin());
                 txtTipo.setText(Integer.toString(periodo.getTipo()));                
                 txtObservaciones.setText(periodo.getObservaciones());
                 txtCodigo_sicoa.setText(Integer.toString(periodo.getCodigo_sicoa()));
@@ -506,14 +532,17 @@ public class FrmMenuPeriodo extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblObservaciones;
     private javax.swing.JLabel lblTipo;
+    private com.toedter.calendar.JDateChooser spfecha_fin;
+    private com.toedter.calendar.JDateChooser spfecha_inicio;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCodigoBuscar;
     private javax.swing.JTextField txtCodigo_sicoa;
     private javax.swing.JTextField txtEstado;
-    private javax.swing.JTextField txtFecha_fin;
-    private javax.swing.JTextField txtFecha_inicio;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtObservaciones;
     private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
+
+   
+    
 }

@@ -15,6 +15,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      * Creates new form FrmMenuPrincipal
      */
     public FrmMenuPrincipal() {
+        this.setExtendedState(MAXIMIZED_BOTH);
         initComponents();
     }
 

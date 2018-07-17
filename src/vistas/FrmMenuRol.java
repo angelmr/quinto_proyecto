@@ -6,10 +6,16 @@
 package vistas;
 import entidades.Rol;
 import funciones.FRol;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import reportes.Reportes;
+
 /**
  *
  * @author USER
@@ -58,6 +64,7 @@ public class FrmMenuRol extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaListarRoles = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
+        btnGenerarReporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(886, 722));
@@ -133,6 +140,13 @@ public class FrmMenuRol extends javax.swing.JFrame {
             }
         });
 
+        btnGenerarReporte.setText("Generar Reporte");
+        btnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarReporteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,8 +192,10 @@ public class FrmMenuRol extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(btnModificar)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnListar)))))))
-                .addContainerGap(525, Short.MAX_VALUE))
+                                        .addComponent(btnListar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnGenerarReporte)))))))
+                .addContainerGap(402, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +232,8 @@ public class FrmMenuRol extends javax.swing.JFrame {
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
                     .addComponent(btnListar)
-                    .addComponent(btnNuevo))
+                    .addComponent(btnNuevo)
+                    .addComponent(btnGenerarReporte))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -330,6 +347,17 @@ public class FrmMenuRol extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
+        try {
+            Reportes reporte = new Reportes();
+            reporte.ReporteRol();
+        }catch (JRException ex) {
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null , ex);
+        }catch (SQLException ex){
+            Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null , ex);
+        }    
+    }//GEN-LAST:event_btnGenerarReporteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -370,6 +398,7 @@ public class FrmMenuRol extends javax.swing.JFrame {
     private javax.swing.JTable TablaListarRoles;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
